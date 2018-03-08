@@ -1,15 +1,21 @@
+# pyboss assingment week 3
+
+# import dependencies 
 import os
 import csv 
 from pandas import pandas as pd
+import sys
 
 
 #choose 1 or 2
-file_num = 2
+file_num = 1
 
 #creates file path as file
-#file = os.path.join('employee_data1.csv')
-file = os.path.join('employee_data2.csv')
+file = os.path.join('employee_data1.csv')
+# file = os.path.join('employee_data2.csv')
 #file = os.path.join("raw_data", input("Please input the entire file name: "))
+
+#file = os.path.join(" ", input ("Please enter the input filename: \n"))
 
 # state abbr dictionary that was provided
 us_state_abbrev = {
@@ -65,7 +71,7 @@ us_state_abbrev = {
     'Wyoming': 'WY',
 }
 
-# empty lists for parsed data
+# empty lists to store parsed data
 emp_id = []
 first_name = []
 last_name = []
@@ -74,10 +80,11 @@ ssn = []
 state = []
 
 # opens csv file and reads in as dictionary
-# no need to skip header row because it's the same as the dictonary key
+# we can skip header row because it's the same as the dictonary key
 with open(file, 'r') as csvfile:  
     reader = csv.DictReader(csvfile)
-    # appends information to empty lists after being altered
+
+    # appends info to the empty lists
     for row in reader:
         emp_id.append(row['Emp ID'])
         first_name.append(row['Name'].split(" ")[0])
